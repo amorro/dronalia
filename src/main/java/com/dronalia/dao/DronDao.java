@@ -1,6 +1,8 @@
 package com.dronalia.dao;
 
 import com.dronalia.dto.Dron;
+import com.dronalia.enumeradas.EnumDronCategoria;
+import com.dronalia.enumeradas.EnumDronColor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,8 +33,8 @@ public class DronDao {
                 String nombre = rs.getString("dro_nombre");
                 String ejes = rs.getString("dro_ejes");
                 String medida = rs.getString("dro_medida");
-                String categoria = rs.getString("dro_categoria");
-                String color = rs.getString("dro_color");
+                EnumDronCategoria categoria = EnumDronCategoria.valueOf( rs.getString("dro_categoria"));
+                EnumDronColor color = EnumDronColor.valueOf( rs.getString("dro_color"));
                 double precio_base = rs.getDouble("dro_precio_base");
 
                 dron = new Dron(id, nombre, ejes, medida, categoria, color, precio_base);
