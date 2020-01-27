@@ -1,5 +1,6 @@
 package com.dronalia.dto;
 
+import com.dronalia.enumeradas.EnumDronCategoria;
 import com.dronalia.enumeradas.EnumDronColor;
 
 public class Dron {
@@ -10,6 +11,6 @@ public class Dron {
     private String medida;
     private Enum<EnumDronColor> dronColorEnum;
     private double precioBase;
-
+    private Enum<EnumDronCategoria> dronCategoriaEnum;
 
 }
