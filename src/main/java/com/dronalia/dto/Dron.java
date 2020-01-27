@@ -10,18 +10,18 @@ public class Dron {
     private String nombre;
     private String ejes;
     private String medida;
+    private Enum<EnumDronCategoria> dronCategoriaEnum;
     private Enum<EnumDronColor> dronColorEnum;
     private double precioBase;
-    private Enum<EnumDronCategoria> dronCategoriaEnum;
 
-    public Dron(int id, String nombre, String ejes, String medida, Enum<EnumDronColor> dronColorEnum, double precioBase, Enum<EnumDronCategoria> dronCategoriaEnum) {
+    public Dron(int id, String nombre, String ejes, String medida, Enum<EnumDronCategoria> dronCategoriaEnum, Enum<EnumDronColor> dronColorEnum, double precioBase) {
         this.id = id;
         this.nombre = nombre;
         this.ejes = ejes;
         this.medida = medida;
+        this.dronCategoriaEnum = dronCategoriaEnum;
         this.dronColorEnum = dronColorEnum;
         this.precioBase = precioBase;
-        this.dronCategoriaEnum = dronCategoriaEnum;
     }
 
     public int getId() {
@@ -56,6 +56,14 @@ public class Dron {
         this.medida = medida;
     }
 
+    public Enum<EnumDronCategoria> getDronCategoriaEnum() {
+        return dronCategoriaEnum;
+    }
+
+    public void setDronCategoriaEnum(Enum<EnumDronCategoria> dronCategoriaEnum) {
+        this.dronCategoriaEnum = dronCategoriaEnum;
+    }
+
     public Enum<EnumDronColor> getDronColorEnum() {
         return dronColorEnum;
     }
@@ -70,14 +78,6 @@ public class Dron {
 
     public void setPrecioBase(double precioBase) {
         this.precioBase = precioBase;
-    }
-
-    public Enum<EnumDronCategoria> getDronCategoriaEnum() {
-        return dronCategoriaEnum;
-    }
-
-    public void setDronCategoriaEnum(Enum<EnumDronCategoria> dronCategoriaEnum) {
-        this.dronCategoriaEnum = dronCategoriaEnum;
     }
 
     @Override
@@ -100,9 +100,9 @@ public class Dron {
                 ", nombre='" + nombre + '\'' +
                 ", ejes='" + ejes + '\'' +
                 ", medida='" + medida + '\'' +
+                ", dronCategoriaEnum=" + dronCategoriaEnum +
                 ", dronColorEnum=" + dronColorEnum +
                 ", precioBase=" + precioBase +
-                ", dronCategoriaEnum=" + dronCategoriaEnum +
                 '}';
     }
 }
