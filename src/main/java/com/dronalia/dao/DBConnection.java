@@ -1,8 +1,6 @@
 package com.dronalia.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DBConnection {
 
@@ -27,5 +25,30 @@ public class DBConnection {
             return con;
         }
     }
+
+    public static void close(ResultSet rs) {
+        try {
+            rs.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }
+
+    public static void close(PreparedStatement stmt) {
+        try {
+            stmt.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }
+
+    public static void close(Connection conn) {
+        try {
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }
+
 
 }

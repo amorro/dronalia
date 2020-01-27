@@ -15,7 +15,7 @@ public class DronDao {
      *
      */
     public List<Dron> listar() {
-        String SQL_SELECT = "SELECT cli_id, cli_name, cli_surname, cli_email, cli_phone, cli_balance " + " FROM client";
+        String SQL_SELECT = "SELECT dro_id, dro_nombre, dro_ejes, dro_medida, dro_categoria, dro_color, dro_precio_base " + " FROM drones";
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -28,13 +28,14 @@ public class DronDao {
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("dro_id");
-                String name = rs.getString("cli_name");
-                String surname = rs.getString("cli_surname");
-                String email = rs.getString("cli_email");
-                String phone = rs.getString("cli_phone");
-                double balance = rs.getDouble("cli_balance");
+                String nombre = rs.getString("dro_nombre");
+                String ejes = rs.getString("dro_ejes");
+                String medida = rs.getString("dro_medida");
+                String categoria = rs.getString("dro_categoria");
+                String color = rs.getString("dro_color");
+                double precio_base = rs.getDouble("dro_precio_base");
 
-                dron = new Dron(id, name, );
+                dron = new Dron(id, nombre, ejes, medida, categoria, color, precio_base);
                 drons.add(dron);
             }
         } catch (SQLException ex) {
