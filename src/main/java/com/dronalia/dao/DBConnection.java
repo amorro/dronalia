@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DBConnection {
 
     private final String URL = "jdbc:mysql://localhost:3306/"; // BD location
-    private final String BD = "dronalia"; // BD Name .
+    private final String BD = "dronalia"; // BD Name
     private final String USER = "root";
     private final String PASSWORD = "admin";
 
