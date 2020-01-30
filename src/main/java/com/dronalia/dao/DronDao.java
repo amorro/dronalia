@@ -21,7 +21,111 @@ public class DronDao {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Dron dron = null;
+        Dron dron;
+        List<Dron> drons = new ArrayList<>();
+
+        try {
+            conn = DBConnection.getConnection();
+            stmt = conn.prepareStatement(SQL_SELECT);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("dro_id");
+                String nombre = rs.getString("dro_nombre");
+                String ejes = rs.getString("dro_ejes");
+                String medida = rs.getString("dro_medida");
+                EnumDronCategoria categoria = EnumDronCategoria.valueOf( rs.getString("dro_categoria"));
+                EnumDronColor color = EnumDronColor.valueOf( rs.getString("dro_color"));
+                double precio_base = rs.getDouble("dro_precio_base");
+
+                dron = new Dron(id, nombre, ejes, medida, categoria, color, precio_base);
+                drons.add(dron);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            DBConnection.close(rs);
+            DBConnection.close(stmt);
+            DBConnection.close(conn);
+        }
+        return drons;
+    }
+
+    public List<Dron> listarBasicos() {
+        String SQL_SELECT = "SELECT dro_id, dro_nombre, dro_ejes, dro_medida, dro_categoria, dro_color, dro_precio_base " + " FROM drones WHERE dro_categoria = 'BASICO'";
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Dron dron;
+        List<Dron> drons = new ArrayList<>();
+
+        try {
+            conn = DBConnection.getConnection();
+            stmt = conn.prepareStatement(SQL_SELECT);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("dro_id");
+                String nombre = rs.getString("dro_nombre");
+                String ejes = rs.getString("dro_ejes");
+                String medida = rs.getString("dro_medida");
+                EnumDronCategoria categoria = EnumDronCategoria.valueOf( rs.getString("dro_categoria"));
+                EnumDronColor color = EnumDronColor.valueOf( rs.getString("dro_color"));
+                double precio_base = rs.getDouble("dro_precio_base");
+
+                dron = new Dron(id, nombre, ejes, medida, categoria, color, precio_base);
+                drons.add(dron);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            DBConnection.close(rs);
+            DBConnection.close(stmt);
+            DBConnection.close(conn);
+        }
+        return drons;
+    }
+
+
+    public List<Dron> listarAvanzados() {
+        String SQL_SELECT = "SELECT dro_id, dro_nombre, dro_ejes, dro_medida, dro_categoria, dro_color, dro_precio_base " + " FROM drones WHERE dro_categoria = 'AVANZADO'";
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Dron dron;
+        List<Dron> drons = new ArrayList<>();
+
+        try {
+            conn = DBConnection.getConnection();
+            stmt = conn.prepareStatement(SQL_SELECT);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("dro_id");
+                String nombre = rs.getString("dro_nombre");
+                String ejes = rs.getString("dro_ejes");
+                String medida = rs.getString("dro_medida");
+                EnumDronCategoria categoria = EnumDronCategoria.valueOf( rs.getString("dro_categoria"));
+                EnumDronColor color = EnumDronColor.valueOf( rs.getString("dro_color"));
+                double precio_base = rs.getDouble("dro_precio_base");
+
+                dron = new Dron(id, nombre, ejes, medida, categoria, color, precio_base);
+                drons.add(dron);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            DBConnection.close(rs);
+            DBConnection.close(stmt);
+            DBConnection.close(conn);
+        }
+        return drons;
+    }
+
+
+    public List<Dron> listarProfesional() {
+        String SQL_SELECT = "SELECT dro_id, dro_nombre, dro_ejes, dro_medida, dro_categoria, dro_color, dro_precio_base " + " FROM drones WHERE dro_categoria = 'PROFESIONAL'";
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Dron dron;
         List<Dron> drons = new ArrayList<>();
 
         try {
