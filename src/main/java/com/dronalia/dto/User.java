@@ -1,17 +1,30 @@
 package com.dronalia.dto;
 
+import java.util.Objects;
+
 public class User {
+	private String email;
 	private String userName;
 	private String userPassword;
-	private String nom;
-	
-	
-	public User(String userName, String userPassword, String nom) {
+	private String nombre;
+	private String apellidos;
+
+	public User(String email, String userName, String userPassword, String nombre, String apellidos) {
+		this.email = email;
 		this.userName = userName;
 		this.userPassword = userPassword;
-		this.nom = nom;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
 	}
-	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getUserName() {
 		return userName;
 	}
@@ -20,13 +33,6 @@ public class User {
 		this.userName = userName;
 	}
 
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
 	public String getUserPassword() {
 		return userPassword;
 	}
@@ -35,40 +41,51 @@ public class User {
 		this.userPassword = userPassword;
 	}
 
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		User user = (User) o;
+		return email.equals(user.email) &&
+				userName.equals(user.userName) &&
+				userPassword.equals(user.userPassword) &&
+				nombre.equals(user.nombre) &&
+				apellidos.equals(user.apellidos);
+	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
-		return result;
+		return Objects.hash(email, userName);
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof User)) {
-			return false;
-		}
-		User other = (User) obj;
-		if (userName == null) {
-			if (other.userName != null) {
-				return false;
-			}
-		} else if (!userName.equals(other.userName)) {
-			return false;
-		}
-		return true;
-	}
-	
 	@Override
 	public String toString() {
-		return "User [id=" + userName + ", nom=" + nom + "]";
+		return "User{" +
+				"email='" + email + '\'' +
+				", userName='" + userName + '\'' +
+				", userPassword='" + userPassword + '\'' +
+				", nombre='" + nombre + '\'' +
+				", apellidos='" + apellidos + '\'' +
+				'}';
 	}
-
 }
+
+	
+	
+
