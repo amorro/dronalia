@@ -10,7 +10,6 @@ public class Skin {
     private int id;
     private String name;
     private String photo;
-    private Enum<EnumSkinTipus> skinTipusEnum;
     private Enum<EnumSkinTematica> skinTematicaEnum;
 
     public Skin(int id, String name, String photo, Enum<EnumSkinTematica> skinTematicaEnum) {
@@ -57,14 +56,12 @@ public class Skin {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Skin skin = (Skin) o;
-        return id == skin.id &&
-                name.equals(skin.name) &&
-                photo.equals(skin.photo);
+        return id == skin.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, photo);
+        return Objects.hash(id);
     }
 
     @Override
@@ -73,7 +70,6 @@ public class Skin {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", photo='" + photo + '\'' +
-                ", skinTipusEnum=" + skinTipusEnum +
                 ", skinTematicaEnum=" + skinTematicaEnum +
                 '}';
     }

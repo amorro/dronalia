@@ -6,13 +6,13 @@ import java.util.Objects;
 
 public class Dron {
 
-    private int id;
+    private Integer id;
     private String nombre;
     private String ejes;
     private String medida;
     private Enum<EnumDronCategoria> dronCategoriaEnum;
     private Enum<EnumDronColor> dronColorEnum;
-    private double precioBase;
+    private Double precioBase;
 
     public Dron(int id, String nombre, String ejes, String medida, Enum<EnumDronCategoria> dronCategoriaEnum, Enum<EnumDronColor> dronColorEnum, double precioBase) {
         this.id = id;
