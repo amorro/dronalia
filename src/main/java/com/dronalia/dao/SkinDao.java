@@ -1,5 +1,6 @@
 package com.dronalia.dao;
 
+
 import com.dronalia.dto.Skin;
 import com.dronalia.enumeradas.EnumSkinTematica;
 
@@ -20,7 +21,7 @@ public class SkinDao {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Skin skin = null;
+        Skin skin;
         List<Skin> skins = new ArrayList<>();
 
         try {
@@ -29,11 +30,11 @@ public class SkinDao {
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("ski_id");
-                String nombre = rs.getString("ski_nombre");
-                String foto = rs.getString("ski_foto");
+                String name = rs.getString("ski_nombre");
+                String photo = rs.getString("ski_foto");
                 EnumSkinTematica tematica = EnumSkinTematica.valueOf(rs.getString("ski_tematica"));
 
-                skin = new Skin(id, name, photo, skinTematicaEnum);
+                skin = new Skin(id, name, photo, tematica);
                 skins.add(skin);
             }
         }catch (SQLException ex) {

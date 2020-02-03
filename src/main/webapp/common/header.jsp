@@ -17,12 +17,13 @@
 
     <title>Plantilla</title>
 </head>
-<body>
+<body class="container">
 <header id="main-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-6"><img src="img/header.png" width="100%"></div>
-            <div class="col-6"><img src="img/header.png" width="100%"></div>
+<%--            img/header.png--%>
+            <div class="col-6"><img src="https://dummyimage.com/600x100/000/fff" width="100%"></div>
+            <div class="col-6"><img src="https://dummyimage.com/600x100/000/fff" width="100%"></div>
         </div>
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
             <h1 class="my-0 mr-md-auto font-weight-normal lobster">Dronalia</h1>
@@ -30,7 +31,7 @@
                 <a class="p-2 text-dark" href="#">Drones</a>
                 <a class="p-2 text-dark" href="#">Crea el Tuyo</a>
             </nav>
-            <a class="btn btn-outline-primary" href="#">Sign up</a>
+            <a class="btn btn-outline-primary" href="#">Sign in</a>
         </div>
     </div>
 </header>
