@@ -5,7 +5,7 @@ import com.dronalia.enumeradas.EnumSkinTipus;
 
 import java.util.Objects;
 
-public class Skin {
+public class sSkin {
 
     private int id;
     private String name;
