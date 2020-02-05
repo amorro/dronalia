@@ -55,10 +55,9 @@
 <%--    <div class="album py-5 bg-gradient-dark">--%>
         <!-- card -->
         <c:forEach var="dron" varStatus="loop" items="${listaDrones}">
-<%--            <c:if test="${loop.index < 10}">--%>
-                <div class="col-3">
-                    <div class="card" style="width: 30rem;">
-                        <img src="https://dummyimage.com/300x200/000/fff" class="card-img-top" alt="..."><%--  src="<c:out value="${dron.img}"/>"--%>
+                <div class="p-1">
+                    <div class="card" style="width: 18rem;">
+                        <img src="<c:out value="${dron.foto}"/>" class="card-img-top" alt="...">
                         <a class="btn btn-fix text-left" data-toggle="collapse"
                            href="#multiCollapseExample1"
                            role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
@@ -85,7 +84,6 @@
                         </a>
                     </div>
                 </div>
-<%--            </c:if>--%>
         </c:forEach>
 <%--    </div>--%>
 </div>
