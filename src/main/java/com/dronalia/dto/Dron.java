@@ -13,8 +13,9 @@ public class Dron {
     private Enum<EnumDronCategoria> dronCategoriaEnum;
     private Enum<EnumDronColor> dronColorEnum;
     private Double precioBase;
+    private String foto;
 
-    public Dron(int id, String nombre, String ejes, String medida, Enum<EnumDronCategoria> dronCategoriaEnum, Enum<EnumDronColor> dronColorEnum, double precioBase) {
+    public Dron(Integer id, String nombre, String ejes, String medida, Enum<EnumDronCategoria> dronCategoriaEnum, Enum<EnumDronColor> dronColorEnum, Double precioBase, String foto) {
         this.id = id;
         this.nombre = nombre;
         this.ejes = ejes;
@@ -22,13 +23,14 @@ public class Dron {
         this.dronCategoriaEnum = dronCategoriaEnum;
         this.dronColorEnum = dronColorEnum;
         this.precioBase = precioBase;
+        this.foto = foto;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -72,12 +74,20 @@ public class Dron {
         this.dronColorEnum = dronColorEnum;
     }
 
-    public double getPrecioBase() {
+    public Double getPrecioBase() {
         return precioBase;
     }
 
-    public void setPrecioBase(double precioBase) {
+    public void setPrecioBase(Double precioBase) {
         this.precioBase = precioBase;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     @Override
@@ -85,12 +95,19 @@ public class Dron {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Dron dron = (Dron) o;
-        return id == dron.id;
+        return id.equals(dron.id) &&
+                nombre.equals(dron.nombre) &&
+                ejes.equals(dron.ejes) &&
+                medida.equals(dron.medida) &&
+                dronCategoriaEnum.equals(dron.dronCategoriaEnum) &&
+                dronColorEnum.equals(dron.dronColorEnum) &&
+                precioBase.equals(dron.precioBase) &&
+                foto.equals(dron.foto);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, nombre, foto);
     }
 
     @Override
@@ -103,6 +120,7 @@ public class Dron {
                 ", dronCategoriaEnum=" + dronCategoriaEnum +
                 ", dronColorEnum=" + dronColorEnum +
                 ", precioBase=" + precioBase +
+                ", foto='" + foto + '\'' +
                 '}';
     }
 }
