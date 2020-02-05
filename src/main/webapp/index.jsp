@@ -16,7 +16,8 @@
         categoria = EnumDronCategoria.valueOf(pCategoria);
     }
 
-    List<Dron> listaDrones = DronDao.listarDronCategoria(categoria);
+    DronDao listDron = new DronDao();
+    List<Dron> listaDrones = listDron.listarDronCategoria(categoria);
     request.setAttribute("listaDrones", listaDrones);
 
     // També introduím el genere al request
@@ -24,7 +25,7 @@
 
 %>
 
-<jsp:include page="/common/header.jsp"/>
+<jsp:include page="./common/header.jsp"/>
 
 <ul class="nav nav-pills nav-fill">
     <li class="nav-item">
@@ -91,4 +92,4 @@
         </div>
     </div>
 </div>
-<jsp:include page="/common/footer.jsp"/>
+<jsp:include page="./common/footer.jsp"/>
