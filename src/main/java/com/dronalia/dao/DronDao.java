@@ -33,8 +33,9 @@ public class DronDao {
                 EnumDronCategoria categoria = EnumDronCategoria.valueOf(rs.getString("dro_categoria"));
                 EnumDronColor color = EnumDronColor.valueOf(rs.getString("dro_color"));
                 double precio_base = rs.getDouble("dro_precio_base");
+                String foto = rs.getString("dro_foto");
 
-                dron = new Dron(id, nombre, ejes, medida, categoria, color, precio_base);
+                dron = new Dron(id, nombre, ejes, medida, categoria, color, precio_base, foto);
                 drons.add(dron);
             }
         } catch (SQLException ex) {
@@ -47,7 +48,7 @@ public class DronDao {
         return drons;
     }
 
-    public List<Dron> listarDronCategoria(EnumDronCategoria categoria) {
+    public List<Dron> listarDronCategoria(EnumDronCategoria cat) {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -56,7 +57,7 @@ public class DronDao {
 
         try {
             String query = "SELECT * FROM drones";
-            if (categoria != null) {
+            if (cat != null) {
                 query = "SELECT * FROM drones WHERE dro_categoria = ?";
             }
 
@@ -64,9 +65,9 @@ public class DronDao {
             stmt = conn.prepareStatement(query);
             rs = stmt.executeQuery();
 
-            if (categoria != null) {
-                stmt.setString(1, categoria.toString());
-                System.out.println(categoria.toString());
+            if (cat != null) {
+                stmt.setString(1, cat.toString());
+                System.out.println(cat.toString());
             }
 
             if (rs != null) {
@@ -75,11 +76,12 @@ public class DronDao {
                     String nombre = rs.getString("dro_nombre");
                     String ejes = rs.getString("dro_ejes");
                     String medida = rs.getString("dro_medida");
-                    EnumDronCategoria category = EnumDronCategoria.valueOf(rs.getString("dro_categoria"));
+                    EnumDronCategoria categoria = EnumDronCategoria.valueOf(rs.getString("dro_categoria"));
                     EnumDronColor color = EnumDronColor.valueOf(rs.getString("dro_color"));
                     double precio_base = rs.getDouble("dro_precio_base");
+                    String foto = rs.getString("dro_foto");
 
-                    dron = new Dron(id, nombre, ejes, medida, category, color, precio_base);
+                    dron = new Dron(id, nombre, ejes, medida, categoria, color, precio_base, foto);
                     drons.add(dron);
                 }
             }
