@@ -50,6 +50,7 @@ public class DronDao {
 
     public List<Dron> listarDronCategoria(EnumDronCategoria cat) {
 
+        Connection conn = DBConnection.getConnection();
         PreparedStatement stmt;
         ResultSet rs;
         Dron dron;
@@ -61,7 +62,7 @@ public class DronDao {
                 query = "SELECT * FROM drones WHERE dro_categoria = ?";
             }
 
-            Connection conn = DBConnection.getConnection();
+
             stmt = conn.prepareStatement(query);
             rs = stmt.executeQuery();
 

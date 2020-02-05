@@ -5,14 +5,12 @@ import java.sql.*;
 public class DBConnection {
 
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/dronalia?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"; // BD location
-    private static final String BD = "dronalia"; // BD Name
+    private static final String DB = "dronalia"; // BD Name
     private static final String JDBC_USER = "root";
     private static final String JDBC_PASSWORD = "admin";
 
-    public Connection con = null;
 
-    @SuppressWarnings("finally")
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConnection() {
         Connection con = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -22,10 +20,10 @@ public class DBConnection {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            return con;
         }
+        return con;
     }
+
 
     public static void close(ResultSet rs) {
         try {

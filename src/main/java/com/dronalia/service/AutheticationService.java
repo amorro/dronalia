@@ -9,9 +9,9 @@ public class AutheticationService {
 	HashMap<String, User> dadesUsuaris = new HashMap<>();
 
 	public AutheticationService() {
-		dadesUsuaris.put("pedro", new User("pedro", "pass1", "Pedro Sánchez"));
-		dadesUsuaris.put("joan", new User("joan", "pass2", "Joan Nicolau"));
-		dadesUsuaris.put("xavi", new User("xavi", "pass3", "Xavi Pérez"));
+//		dadesUsuaris.put("pedro", new User("pedro", "pass1", "Pedro Sánchez"));
+//		dadesUsuaris.put("joan", new User("joan", "pass2", "Joan Nicolau"));
+//		dadesUsuaris.put("xavi", new User("xavi", "pass3", "Xavi Pérez"));
 	}
 	
 	public User getUsuari (String userId) {
