@@ -9,8 +9,9 @@ public class DBConnection {
     private static final String JDBC_USER = "root";
     private static final String JDBC_PASSWORD = "admin";
 
+    public Connection con = null;
 
-    public static Connection getConnection() {
+    public Connection getConnection() {
         Connection con = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

@@ -17,17 +17,17 @@ public class SkinDao {
      *
      */
     public List<Skin> listar() {
-        String SQL_SELECT = "SELECT ski_id, ski_nombre, ski_foto, ski_tematica" + " FROM skins";
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
+        DBConnection db = new DBConnection();
         Skin skin;
         List<Skin> skins = new ArrayList<>();
 
         try {
-            conn = DBConnection.getConnection();
-            stmt = conn.prepareStatement(SQL_SELECT);
-            rs = stmt.executeQuery();
+            String query = "SELECT * FROM skins";
+
+            Connection conn = db.getConnection();
+            PreparedStatement sentencia = conn.prepareStatement(query);
+            ResultSet rs = sentencia.executeQuery();
+
             while (rs.next()) {
                 int id = rs.getInt("ski_id");
                 String name = rs.getString("ski_nombre");
@@ -39,11 +39,11 @@ public class SkinDao {
             }
         }catch (SQLException ex) {
             ex.printStackTrace(System.out);
-        } finally {
-            DBConnection.close(rs);
-            DBConnection.close(stmt);
-            DBConnection.close(conn);
-        }
+        } //finally {
+//            DBConnection.close(rs);
+//            DBConnection.close(stmt);
+//            DBConnection.close(conn);
+//        }
         return skins;
     }
 }

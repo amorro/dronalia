@@ -1,10 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ page import="com.dronalia.dto.Dron" %>
-<%@ page import="java.util.List" %>
 <%@ page import="com.dronalia.dao.DronDao" %>
+<%@ page import="com.dronalia.dto.Dron" %>
 <%@ page import="com.dronalia.enumeradas.EnumDronCategoria" %>
+<%@ page import="java.util.List" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%
     // Lectura dels paràmetres
@@ -51,13 +52,13 @@
 </div>
 
 <div class="row">
-    <div class="album py-5 bg-gradient-dark">
+<%--    <div class="album py-5 bg-gradient-dark">--%>
         <!-- card -->
         <c:forEach var="dron" varStatus="loop" items="${listaDrones}">
-            <c:if test="${loop.index < loop.last}">
-                <div class="col-md-6">
+<%--            <c:if test="${loop.index < 10}">--%>
+                <div class="col-3">
                     <div class="card" style="width: 30rem;">
-                       <img src="https://dummyimage.com/300x200/000/fff" class="card-img-top" alt="..."><%--  src="<c:out value="${dron.img}"/>"--%>
+                        <img src="https://dummyimage.com/300x200/000/fff" class="card-img-top" alt="..."><%--  src="<c:out value="${dron.img}"/>"--%>
                         <a class="btn btn-fix text-left" data-toggle="collapse"
                            href="#multiCollapseExample1"
                            role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
@@ -71,10 +72,10 @@
                                                 <div>
                                                     <p class="card-text"><c:out value="${dron.ejes}"/></p>
                                                     <p class="card-text"><c:out value="${dron.medida}"/></p>
-                                                    <button href="product.html" class="btn btn-primary">
+                                                    <a href="./product.jsp" class="btn btn-primary">
                                                         Añadir al
                                                         carrito
-                                                    </button>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -84,8 +85,8 @@
                         </a>
                     </div>
                 </div>
-            </c:if>
+<%--            </c:if>--%>
         </c:forEach>
-    </div>
+<%--    </div>--%>
 </div>
 <jsp:include page="./common/footer.jsp"/>

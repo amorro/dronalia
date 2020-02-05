@@ -49,12 +49,8 @@ public class DronDao {
 //    }
 
     public List<Dron> listarDronCategoria(EnumDronCategoria cat) {
-
-        Connection conn = DBConnection.getConnection();
-        PreparedStatement stmt;
-        ResultSet rs;
-        Dron dron;
-        List<Dron> drons = new ArrayList<>();
+        DBConnection db = new DBConnection();
+        List<Dron> listaDrons = new ArrayList<>();
 
         try {
             String query = "SELECT * FROM drones";
@@ -62,14 +58,15 @@ public class DronDao {
                 query = "SELECT * FROM drones WHERE dro_categoria = ?";
             }
 
-
-            stmt = conn.prepareStatement(query);
-            rs = stmt.executeQuery();
+            Connection conn = db.getConnection();
+            PreparedStatement sentencia = conn.prepareStatement(query);
 
             if (cat != null) {
-                stmt.setString(1, cat.toString());
+                sentencia.setString(1, cat.toString());
                 System.out.println(cat.toString());
             }
+
+            ResultSet rs = sentencia.executeQuery();
 
             if (rs != null) {
                 while (rs.next()) {
@@ -82,17 +79,18 @@ public class DronDao {
                     double precio_base = rs.getDouble("dro_precio_base");
                     String foto = rs.getString("dro_foto");
 
-                    dron = new Dron(id, nombre, ejes, medida, categoria, color, precio_base, foto);
-                    drons.add(dron);
+                    Dron dron = new Dron(id, nombre, ejes, medida, categoria, color, precio_base, foto);
+                    System.out.println(dron.toString());
+                    listaDrons.add(dron);
                 }
             }
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         } //finally {
 //            DBConnection.close(rs);
-//            DBConnection.close(stmt);
+//            DBConnection.close(se);
 //            DBConnection.close(conn);
 //        }
-        return drons;
+        return listaDrons;
     }
 }

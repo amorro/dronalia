@@ -20,6 +20,7 @@ public class WebController extends HttpServlet {
 
         // Recuperam l'acció a realitzar i es crida a la funció corresponent
 //        String action = request.getParameter("action");
+//
 //        if (action != null) {
 //            switch (action) {
 //                case "basico":
@@ -32,7 +33,7 @@ public class WebController extends HttpServlet {
 //                    this.showDronProfesional(request, response);
 //                    break;
 //                default:
-//                    this.showListDron(request, response);
+//                    this.listar(request, response);
 //            }
 //        } else {
 //            this.showListDron(request, response);
