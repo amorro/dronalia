@@ -5,23 +5,23 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <%
-    // Lectura de paràmetres: codi de la pel·lícula
+    // Lectura de paràmetre codi
     int idDron = Integer.parseInt(request.getParameter("codi"));
-    System.out.println("Codi film: " + idDron);
+    System.out.println("Codi dron: " + idDron);
 
-    // Recuperam l'objecte pel·lícula
+
     DronDao uniqueDron = new DronDao();
     Dron dron = uniqueDron.listarDron(idDron);
 
     // Necessari per ser processat per JSLT
     request.setAttribute("dron", dron);
 
-    // Variable per determinar si mostra la fitxa html de la pel·lícula o no
+    // Variable per determinar si mostra la fitxa html o no
     boolean trobada = (dron != null);
     request.setAttribute("exist", trobada);
 %>
 
-<jsp:include page="./common/header.jsp"/>
+<jsp:include page="common/header.jsp"/>
 
 <c:if test="${exist}">
 
@@ -66,7 +66,7 @@
                         <p class="product-description">Número de ejes: ${dron.ejes}</p>
                         <p class="product-description">Medida: ${dron.medida}cm</p>
                     </div>
-                    <h4 class="price">Precio: <span>${dron.precioBase}€</span></h4>
+                    <h4 class="price">Precio: <span>${dron.precioBase + precioSkin}€</span></h4>
                 </div>
                 <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
                 <h5>
@@ -75,8 +75,9 @@
                     </button>
                 </h5>
                 <div class="action">
-                    <button class="add-to-cart btn btn-success" type="button">Añadir al carrito <i
-                            class="fas fa-cart-plus"></i></button>
+                    <button class="add-to-cart btn btn-success" type="button"
+                            onclick="agregarCarrito(${dron.id}, ${dron.nombre}, ${dron.foto}a, ${dron.precioBase + precioSkin})">
+                        Añadir al carrito <i class="fas fa-cart-plus"></i></button>
                     <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
                 </div>
             </div>
@@ -91,4 +92,4 @@
 
 <jsp:include page="/modal.jsp"/>
 
-<jsp:include page="./common/footer.jsp"/>
+<jsp:include page="common/footer.jsp"/>

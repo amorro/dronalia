@@ -11,7 +11,6 @@
     // Lectura dels paràmetres
     String pCategoria = request.getParameter("categoria");
 
-    // Validació del paràmetre i creació del valor enum de tipu Genere
     EnumDronCategoria categoria = null;
     if (pCategoria != null) {
         categoria = EnumDronCategoria.valueOf(pCategoria);
@@ -26,9 +25,9 @@
 
 %>
 
-<jsp:include page="./common/header.jsp"/>
+<jsp:include page="common/header.jsp"/>
 
-<ul class="nav nav-pills nav-fill">
+<ul class="nav nav-pills nav-fill" id="nav">
     <li class="nav-item">
         <a class="nav-link <c:out value="${categoria==null?'active':''}"/>" href="index.jsp">Todos</a>
     </li>
@@ -58,18 +57,18 @@
         <div class="p-1">
             <div class="card" style="width: 18rem;">
                 <img src="<c:out value="${dron.foto}"/>" class="card-img-top" alt="...">
-                <a class="btn btn-fix text-left" data-toggle="collapse"
-                   href="#multiCollapseExample1"
-                   role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
                     <div class="card-body">
                         <h5 class="card-title"><c:out value="${dron.nombre}"/></h5>
                         <div>
-                            <a href="./product.jsp?codi=<c:out value="${dron.id}"/>" class="btn btn-info">Más información</a>
+                            <a href="./product.jsp?codi=<c:out value="${dron.id}"/>" class="btn btn-info">Más
+                                información</a>
                             <div>
                                 <p class="card-text">Ejes: <c:out value="${dron.ejes}"/></p>
                                 <p class="card-text">Medida: <c:out value="${dron.medida}"/></p>
                                 <p><c:out value="${dron.precioBase}"/></p>
-                                <a href="./product.jsp" class="btn btn-primary">Añadir al carrito</a>
+                                <button class="btn btn-primary"
+                                   onclick="agregarCarrito(${dron.id}, '${dron.nombre}', '${dron.foto}a', '${dron.precioBase}')">
+                                    Añadir al carrito</button>
                             </div>
                         </div>
                     </div>
@@ -79,4 +78,5 @@
     </c:forEach>
     <%--    </div>--%>
 </div>
-<jsp:include page="./common/footer.jsp"/>
+
+<jsp:include page="common/footer.jsp"/>
