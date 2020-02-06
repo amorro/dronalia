@@ -28,8 +28,8 @@
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
         <h1 class="my-0 mr-md-auto font-weight-normal lobster"><a class="text-dark" href="./index.jsp">Dronalia</a></h1>
         <nav class="my-2 my-md-0 mr-md-3">
-            <a class="p-2 text-dark" href="#">Drones</a>
-            <a class="p-2 text-dark" href="#">Crea el Tuyo</a>
+            <a class="p-2 text-dark" href="#"></a>
+            <a class="p-2 text-dark" href="./carrito.jsp">Carrito <i class="fas fa-shopping-cart"></i></a>
         </nav>
         <a class="btn btn-outline-primary" href="./login.jsp">Log in</a>
     </div>

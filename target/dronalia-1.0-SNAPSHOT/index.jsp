@@ -52,39 +52,31 @@
 </div>
 
 <div class="row">
-<%--    <div class="album py-5 bg-gradient-dark">--%>
-        <!-- card -->
-        <c:forEach var="dron" varStatus="loop" items="${listaDrones}">
-                <div class="p-1">
-                    <div class="card" style="width: 18rem;">
-                        <img src="<c:out value="${dron.foto}"/>" class="card-img-top" alt="...">
-                        <a class="btn btn-fix text-left" data-toggle="collapse"
-                           href="#multiCollapseExample1"
-                           role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
-                            <div class="card-body">
-                                <h5 class="card-title"><c:out value="${dron.nombre}"/></h5>
-                                <div>
-                                    <p><c:out value="${dron.precioBase}"/></p>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="collapse multi-collapse" id="multiCollapseExample1">
-                                                <div>
-                                                    <p class="card-text"><c:out value="${dron.ejes}"/></p>
-                                                    <p class="card-text"><c:out value="${dron.medida}"/></p>
-                                                    <a href="./product.jsp" class="btn btn-primary">
-                                                        Añadir al
-                                                        carrito
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+    <%--    <div class="album py-5 bg-gradient-dark">--%>
+    <!-- card -->
+    <c:forEach var="dron" varStatus="loop" items="${listaDrones}">
+        <div class="p-1">
+            <div class="card" style="width: 18rem;">
+                <img src="<c:out value="${dron.foto}"/>" class="card-img-top" alt="...">
+                <a class="btn btn-fix text-left" data-toggle="collapse"
+                   href="#multiCollapseExample1"
+                   role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+                    <div class="card-body">
+                        <h5 class="card-title"><c:out value="${dron.nombre}"/></h5>
+                        <div>
+                            <a href="./product.jsp?codi=<c:out value="${dron.id}"/>" class="btn btn-info">Más información</a>
+                            <div>
+                                <p class="card-text">Ejes: <c:out value="${dron.ejes}"/></p>
+                                <p class="card-text">Medida: <c:out value="${dron.medida}"/></p>
+                                <p><c:out value="${dron.precioBase}"/></p>
+                                <a href="./product.jsp" class="btn btn-primary">Añadir al carrito</a>
                             </div>
-                        </a>
+                        </div>
                     </div>
-                </div>
-        </c:forEach>
-<%--    </div>--%>
+                </a>
+            </div>
+        </div>
+    </c:forEach>
+    <%--    </div>--%>
 </div>
 <jsp:include page="./common/footer.jsp"/>
