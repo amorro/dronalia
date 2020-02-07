@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@page pageEncoding="UTF-8" %>
 <%@ page import="com.dronalia.dao.DronDao" %>
 <%@ page import="com.dronalia.dto.Dron" %>
 <%@ page import="com.dronalia.enumeradas.EnumDronCategoria" %>
@@ -47,7 +47,7 @@
 
 <div class="arrowdiv">
     <img src="img/arrow.png"/>
-    <div class="text-over lobsterTwo">${categoria==null?'Todos':categoria}</div>
+    <div class="text-over lobsterTwo">${categoria==null?'TODOS':categoria}</div>
 </div>
 
 <div class="row">

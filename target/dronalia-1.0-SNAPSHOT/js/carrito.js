@@ -1,28 +1,29 @@
-let newItem = {};
-window.onload = function () {
-
-};
-
+let newItem = {'items': []};
 
 function agregarCarrito(id, nombre, foto, precioFinal) {
-    newItem = {id: id, nombre: nombre, foto: foto, precio: precioFinal};
+    newItem = {dron: {id: id, nombre: nombre, foto: foto, precio: precioFinal}};
     console.log(newItem);
-    agregarLocalStorage()
+    agregarLocalStorage(newItem)
 }
 
-function agregarLocalStorage() {
-    localStorage.setItem('drones', newItem);
+function agregarLocalStorage(item) {
+    localStorage.setItem("drones", JSON.stringify(item));
 }
 
 function getCarrito() {
-    let objStorage = JSON.parse(localStorage.getItem('drones'));
-    $.each (objStorage, function (key, dron) {
-        document.getElementById('container-dron').innerHTML += `
-    <tr>
-        <th scope="row">dron.foto</th>
-        <td>dron.nombre</td>
-        <td><i class="fas fa-trash-alt"></i></td>
-        <td>dron.precio</td>
-    </tr>`;
-    });
+    if (localStorage.getItem('favoritePostsList')) {
+        let objStorage = JSON.parse(localStorage.getItem("drones"));
+        let container = document.getElementById('container-dron');
+        $.each(objStorage.dron, function (key, val) {
+            container.innerHTML += `
+                <tr>
+                    <th scope="row">${val.foto}</th>
+                    <td>${val.nombre}</td>
+                    <td><i class="fas fa-trash-alt"></i></td>
+                    <td>${val.precio}</td>
+                </tr>`;
+        });
+        //} else {
+    //     document.getElementById('container-dron').innerHTML = "El carrito está vacío";
+    }
 }
