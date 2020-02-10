@@ -2,8 +2,6 @@
 
 <jsp:include page="common/header.jsp"/>
 
-<button onclick="getCarrito()">getCarrito</button>
-
 <table class="table table-striped text-center">
     <thead class="thead-dark">
     <tr>
@@ -16,6 +14,5 @@
     <tbody id="container-dron">
     </tbody>
 </table>
-
 
 <jsp:include page="common/footer.jsp"/>

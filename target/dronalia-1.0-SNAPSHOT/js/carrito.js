@@ -1,4 +1,5 @@
 let items = [];
+getCarrito();
 
 function agregarCarrito(id, nombre, foto, precioFinal) {
     newItem = {id: id, nombre: nombre, foto: foto, precio: precioFinal};
@@ -31,7 +32,7 @@ function getCarrito() {
 }
 
 function quitarCarrito(id) {
-    let newCarrito = items.filter(e => e.id != id);
+    newCarrito = items.filter(e => e.id !== id);
     localStorage.setItem("drones", JSON.stringify(newCarrito));
     getCarrito();
 }
