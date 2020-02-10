@@ -7,8 +7,8 @@ public class DBConnection {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/dronalia?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"; // BD location
     private static final String DB = "dronalia"; // BD Name
     private static final String JDBC_USER = "root";
-    private static final String JDBC_PASSWORD = "1234";
-    
+    private static final String JDBC_PASSWORD = "admin";
+
     public Connection con = null;
 
     public Connection getConnection() {

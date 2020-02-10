@@ -2,8 +2,6 @@
 
 <jsp:include page="common/header.jsp"/>
 
-<button onclick="getCarrito()">getCarrito</button>
-
 <table class="table table-striped text-center">
     <thead class="thead-dark">
     <tr>
