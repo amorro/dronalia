@@ -7,11 +7,6 @@
    		<welcome-file>index.jsp</welcome-file>
   	</welcome-file-list>
 
-    <mime-mapping>
-        <extension>js</extension>
-        <mime-type>text/javascript</mime-type>
-    </mime-mapping>
-
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
