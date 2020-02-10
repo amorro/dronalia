@@ -17,5 +17,5 @@
     </tbody>
 </table>
 
-
+<script type="text/javascript">getCarrito()</script>
 <jsp:include page="common/footer.jsp"/>
