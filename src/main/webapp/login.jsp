@@ -22,6 +22,7 @@
     <input type="password" class="form-control" id="exampleInputPassword1">
   </div>
     <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/dronalia/"></a><button type="button" class="btn">Back</button>
 </form>
 
 <jsp:include page="common/footer.jsp"/>
