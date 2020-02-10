@@ -4,7 +4,7 @@
 
 <button onclick="getCarrito()">getCarrito</button>
 
-<table class="table table-striped">
+<table class="table table-striped text-center">
     <thead class="thead-dark">
     <tr>
         <th scope="col">Imagen</th>
