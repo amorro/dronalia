@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@page pageEncoding="UTF-8" %>
 <%@ page import="com.dronalia.dao.DronDao" %>
 <%@ page import="com.dronalia.dto.Dron" %>
 <%@ page import="com.dronalia.enumeradas.EnumDronCategoria" %>
@@ -11,7 +11,6 @@
     // Lectura dels paràmetres
     String pCategoria = request.getParameter("categoria");
 
-    // Validació del paràmetre i creació del valor enum de tipu Genere
     EnumDronCategoria categoria = null;
     if (pCategoria != null) {
         categoria = EnumDronCategoria.valueOf(pCategoria);
@@ -26,9 +25,9 @@
 
 %>
 
-<jsp:include page="./common/header.jsp"/>
+<jsp:include page="common/header.jsp"/>
 
-<ul class="nav nav-pills nav-fill">
+<ul class="nav nav-pills nav-fill" id="nav">
     <li class="nav-item">
         <a class="nav-link <c:out value="${categoria==null?'active':''}"/>" href="index.jsp">Todos</a>
     </li>
@@ -48,45 +47,36 @@
 
 <div class="arrowdiv">
     <img src="img/arrow.png"/>
-    <div class="text-over lobsterTwo">${categoria==null?'Todos':categoria}</div>
+    <div class="text-over lobsterTwo">${categoria==null?'TODOS':categoria}</div>
 </div>
 
 <div class="row">
-<%--    <div class="album py-5 bg-gradient-dark">--%>
-        <!-- card -->
-        <c:forEach var="dron" varStatus="loop" items="${listaDrones}">
-<%--            <c:if test="${loop.index < 10}">--%>
-                <div class="col-3">
-                    <div class="card" style="width: 30rem;">
-                        <img src="https://dummyimage.com/300x200/000/fff" class="card-img-top" alt="..."><%--  src="<c:out value="${dron.img}"/>"--%>
-                        <a class="btn btn-fix text-left" data-toggle="collapse"
-                           href="#multiCollapseExample1"
-                           role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
-                            <div class="card-body">
-                                <h5 class="card-title"><c:out value="${dron.nombre}"/></h5>
-                                <div>
-                                    <p><c:out value="${dron.precioBase}"/></p>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="collapse multi-collapse" id="multiCollapseExample1">
-                                                <div>
-                                                    <p class="card-text"><c:out value="${dron.ejes}"/></p>
-                                                    <p class="card-text"><c:out value="${dron.medida}"/></p>
-                                                    <a href="./product.jsp" class="btn btn-primary">
-                                                        Añadir al
-                                                        carrito
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+    <%--    <div class="album py-5 bg-gradient-dark">--%>
+    <!-- card -->
+    <c:forEach var="dron" varStatus="loop" items="${listaDrones}">
+        <div class="p-1">
+            <div class="card" style="width: 18rem;">
+                <img src="https://dummyimage.com/300x300/000/fff<c:out value="${dron.foto}"/>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><c:out value="${dron.nombre}"/></h5>
+                        <div>
+                            <a href="./product.jsp?codi=<c:out value="${dron.id}"/>" class="btn btn-info">Más
+                                información</a>
+                            <div>
+                                <p class="card-text">Ejes: <c:out value="${dron.ejes}"/></p>
+                                <p class="card-text">Medida: <c:out value="${dron.medida}"/></p>
+                                <p><c:out value="${dron.precioBase}"/>€</p>
+                                <button class="btn btn-primary"
+                                   onclick="agregarCarrito(${dron.id}, '${dron.nombre}', '${dron.foto}a', '${dron.precioBase}')">
+                                    Añadir al carrito</button>
                             </div>
-                        </a>
+                        </div>
                     </div>
-                </div>
-<%--            </c:if>--%>
-        </c:forEach>
-<%--    </div>--%>
+                </a>
+            </div>
+        </div>
+    </c:forEach>
+    <%--    </div>--%>
 </div>
-<jsp:include page="./common/footer.jsp"/>
+
+<jsp:include page="common/footer.jsp"/>

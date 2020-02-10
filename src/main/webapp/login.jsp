@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<jsp:include page="./common/header.jsp"/>
+<jsp:include page="common/header.jsp"/>
 
 <h2>HTML Forms</h2>
 
@@ -25,4 +25,4 @@
     <a href="/dronalia/"></a><button type="button" class="btn">Back</button>
 </form>
 
-<jsp:include page="./common/footer.jsp"/>
+<jsp:include page="common/footer.jsp"/>
