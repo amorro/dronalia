@@ -46,7 +46,7 @@
 </ul>
 
 <div class="arrowdiv">
-    <img src="img/arrow.png"/>
+    <img src="./img/arrow.png"/>
     <div class="text-over lobsterTwo">${categoria==null?'TODOS':categoria}</div>
 </div>
 

@@ -1,4 +1,13 @@
-let carrito = localStorage.getItem('drones');
+let carrito = [];
+window.onload = function() {
+    if (localStorage.getItem('drones') === [] || null) {
+        carrito = [];
+    } else {
+        carrito = localStorage.getItem('drones');
+    }
+    return carrito;
+};
+
 getCarrito();
 
 function agregarCarrito(id, nombre, foto, precioFinal) {
@@ -8,11 +17,8 @@ function agregarCarrito(id, nombre, foto, precioFinal) {
 }
 
 function agregarLocalStorage(item) {
-    if (carrito == null) {
-        carrito = [];
-    } else {
-        carrito.push(item);
-    }
+    carrito.push(item);
+
     localStorage.setItem("drones", JSON.stringify(carrito));
 }
 
@@ -36,6 +42,7 @@ function getCarrito() {
 }
 
 function quitarCarrito(id) {
+    let carrito = JSON.parse(localStorage.getItem("drones"));
     carrito = carrito.filter(e => e.id !== id);
     localStorage.setItem("drones", JSON.stringify(carrito));
     getCarrito();
