@@ -3,18 +3,19 @@ package com.dronalia.dto;
 import java.util.Objects;
 
 public class User {
+
 	private String email;
-	private String userName;
-	private String userPassword;
 	private String nombre;
 	private String apellidos;
+	private String password;
 
-	public User(String email, String userName, String userPassword, String nombre, String apellidos) {
+
+	public User(String email, String nombre, String apellidos, String password) {
 		this.email = email;
-		this.userName = userName;
-		this.userPassword = userPassword;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
+		this.password = password;
+
 	}
 
 	public String getEmail() {
@@ -25,20 +26,12 @@ public class User {
 		this.email = email;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getUserPassword() {
-		return userPassword;
-	}
-
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getNombre() {
@@ -63,23 +56,21 @@ public class User {
 		if (o == null || getClass() != o.getClass()) return false;
 		User user = (User) o;
 		return email.equals(user.email) &&
-				userName.equals(user.userName) &&
-				userPassword.equals(user.userPassword) &&
+				password.equals(user.password) &&
 				nombre.equals(user.nombre) &&
 				apellidos.equals(user.apellidos);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, userName);
+		return Objects.hash(email);
 	}
 
 	@Override
 	public String toString() {
 		return "User{" +
 				"email='" + email + '\'' +
-				", userName='" + userName + '\'' +
-				", userPassword='" + userPassword + '\'' +
+				", userPassword='" + password + '\'' +
 				", nombre='" + nombre + '\'' +
 				", apellidos='" + apellidos + '\'' +
 				'}';

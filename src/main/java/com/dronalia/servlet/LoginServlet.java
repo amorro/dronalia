@@ -1,46 +1,37 @@
 package com.dronalia.servlet;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
+import java.util.HashMap;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import com.dronalia.dto.User;
-import com.dronalia.service.AutheticationService;
 
-/**
- * Servlet implementation class LoginServlet
- */
+
 @WebServlet("/action-login")
-public class LoginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+public class LoginServlet {
+
+    HashMap<String, User> usuaris = new HashMap<>();
+
     public LoginServlet() {
-        super();
+        usuaris.put("pedro", new User("pedro@gmail.com", "Pedro", "Sánchez", "123"));
+        usuaris.put("joan", new User("joan@gmail.com", "joan", "Nicolau", "123"));
+        usuaris.put("xavi", new User("xavi@gmail.com", "xavi", "Pérez", "123"));
     }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("email");
-		String userPass = request.getParameter("password");
-		AutheticationService servei = new AutheticationService();
-		boolean isAuthenticate = servei.validUser(userId, userPass);
-		
+    public User getUsuari(String userId) {
+        return usuaris.get(userId);
+    }
 
-		// Comprova si l'usuari existeix
-		if (isAuthenticate) {
-			System.out.println("usuari:"+userId); 
-			
-			// Afegir l'usuari a la sessió i saludar a l'usuari
-			User usuari = servei.getUsuari(userId);			
-			request.getSession().setAttribute("user", usuari);			
-			response.sendRedirect("login/user-greeting.jsp");
-			
-		}else {
-			response.sendRedirect("login/user-login.jsp");
-		}
+    public boolean existUsuari(String userId) {
+        return usuaris.containsKey(userId);
+    }
 
-	}
-
+    public boolean validUser(String userId, String userPass) {
+        if (usuaris.containsKey(userId)) {
+            User usuari = usuaris.get(userId);
+            String pass = usuari.getPassword();
+            return (pass.equals(userPass));
+        } else {
+            return false;
+        }
+    }
 }

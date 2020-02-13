@@ -33,7 +33,7 @@ function getCarrito() {
         $.each(drones, function (key, val) {
             container.innerHTML += `
                 <tr>
-                    <th scope="row"><img src="${val.foto}" class="col-2" alt=""></th>
+                    <th scope="row"><img src="${val.foto}" style="width: 8vw;" alt=""></th>
                     <td>${val.nombre}</td>
                     <td><a href="#" onclick="quitarCarrito(${val.id})" class="btn"><i class="fas fa-trash-alt"></i></a></td>
                     <td>${val.precio}</td>
