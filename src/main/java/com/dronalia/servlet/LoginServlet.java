@@ -22,8 +22,8 @@ public class LoginServlet extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("usuName");
-		String userPass = request.getParameter("usuPass");
+		String userId = request.getParameter("email");
+		String userPass = request.getParameter("password");
 		AutheticationService servei = new AutheticationService();
 		boolean isAuthenticate = servei.validUser(userId, userPass);
 		

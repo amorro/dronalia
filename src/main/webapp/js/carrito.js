@@ -1,24 +1,27 @@
-let carrito = [];
 window.onload = function() {
-    if (localStorage.getItem('drones') === [] || null) {
-        carrito = [];
-    } else {
-        carrito = localStorage.getItem('drones');
-    }
-    return carrito;
+    cargarCarrito();
+    getCarrito();
 };
 
-getCarrito();
+function cargarCarrito() {
+    if (localStorage.getItem('drones') === null || []) {
+        return carrito = [];
+    } else {
+        let carrito = localStorage.getItem('drones');
+        return carrito;
+    }
+
+}
+
 
 function agregarCarrito(id, nombre, foto, precioFinal) {
     newItem = {id: id, nombre: nombre, foto: foto, precio: precioFinal};
     console.log(newItem);
-    agregarLocalStorage(newItem)
+    carrito.push(newItem);
+    agregarLocalStorage()
 }
 
-function agregarLocalStorage(item) {
-    carrito.push(item);
-
+function agregarLocalStorage() {
     localStorage.setItem("drones", JSON.stringify(carrito));
 }
 
@@ -30,7 +33,7 @@ function getCarrito() {
         $.each(drones, function (key, val) {
             container.innerHTML += `
                 <tr>
-                    <th scope="row">${val.foto}</th>
+                    <th scope="row"><img src="${val.foto}" class="col-2" alt=""></th>
                     <td>${val.nombre}</td>
                     <td><a href="#" onclick="quitarCarrito(${val.id})" class="btn"><i class="fas fa-trash-alt"></i></a></td>
                     <td>${val.precio}</td>

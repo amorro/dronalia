@@ -1,5 +1,7 @@
 <%@page pageEncoding="UTF-8" %>
 
+<hr>
+
 <footer id="pie-pagina">
     <!-- FOOTER -->
     <footer class="container">

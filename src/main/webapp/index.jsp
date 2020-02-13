@@ -56,7 +56,7 @@
     <c:forEach var="dron" varStatus="loop" items="${listaDrones}">
         <div class="p-1">
             <div class="card" style="width: 18rem;">
-                <img src="https://dummyimage.com/300x300/000/fff<c:out value="${dron.foto}"/>" class="card-img-top" alt="...">
+                <img src="<c:out value="${dron.foto}"/>" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title"><c:out value="${dron.nombre}"/></h5>
                         <div>
@@ -67,7 +67,7 @@
                                 <p class="card-text">Medida: <c:out value="${dron.medida}"/></p>
                                 <p><c:out value="${dron.precioBase}"/>€</p>
                                 <button class="btn btn-primary"
-                                   onclick="agregarCarrito(${dron.id}, '${dron.nombre}', '${dron.foto}a', '${dron.precioBase}')">
+                                   onclick="agregarCarrito(${dron.id}, '${dron.nombre}', '${dron.foto}', '${dron.precioBase}')">
                                     Añadir al carrito</button>
                             </div>
                         </div>

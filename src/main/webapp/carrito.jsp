@@ -2,7 +2,7 @@
 
 <jsp:include page="common/header.jsp"/>
 
-<table class="table table-striped text-center">
+<table class="table table-striped text-center align-middle">
     <thead class="thead-dark">
     <tr>
         <th scope="col">Imagen</th>
@@ -14,5 +14,7 @@
     <tbody id="container-dron">
     </tbody>
 </table>
-
+<div class="d-flex justify-content-right">
+    <button class="btn btn-success">Comprar</button>
+</div>
 <jsp:include page="common/footer.jsp"/>
