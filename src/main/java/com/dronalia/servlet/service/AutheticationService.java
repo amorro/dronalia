@@ -16,19 +16,19 @@ public class AutheticationService {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String userId = request.getParameter("email");
-        String userPass = request.getParameter("password");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
         AutheticationService AutheticationService = new AutheticationService();
-        boolean isAuthenticate = LoginServlet.validUser(userId, userPass);
+        boolean isAuthenticate = LoginServlet.validUser(email, password);
 
         // Comprova si l'usuari existeix
         if (isAuthenticate) {
-            System.out.println("usuari:" + userId);
+            System.out.println("usuari:" + email);
 
             // Afegir l'usuari a la sessió i saludar a l'usuari
-            User usuari = LoginServlet.getUsuari(userId);
+            User usuari = LoginServlet.getUsuari(email);
             request.getSession().setAttribute("user", usuari);
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("/index.jsp");
         } else {
             response.sendRedirect("login/login.jsp");
         }
