@@ -9,7 +9,7 @@ import com.dronalia.dto.User;
 @WebServlet("/action-login")
 public class LoginServlet {
 
-    HashMap<String, User> usuaris = new HashMap<>();
+    static HashMap<String, User> usuaris = new HashMap<>();
 
     public LoginServlet() {
         usuaris.put("pedro", new User("pedro@gmail.com", "Pedro", "Sánchez", "123"));
@@ -17,7 +17,7 @@ public class LoginServlet {
         usuaris.put("xavi", new User("xavi@gmail.com", "xavi", "Pérez", "123"));
     }
 
-    public User getUsuari(String userId) {
+    public static User getUsuari(String userId) {
         return usuaris.get(userId);
     }
 
@@ -25,7 +25,7 @@ public class LoginServlet {
         return usuaris.containsKey(userId);
     }
 
-    public boolean validUser(String userId, String userPass) {
+    public static boolean validUser(String userId, String userPass) {
         if (usuaris.containsKey(userId)) {
             User usuari = usuaris.get(userId);
             String pass = usuari.getPassword();
