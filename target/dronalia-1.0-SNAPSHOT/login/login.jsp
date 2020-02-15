@@ -5,10 +5,10 @@
 <p class="h2 text-center">Log In</p>
 
 <div class="d-flex justify-content-center">
-    <form class="col-5" method="post" action="/action-login">
+    <form class="col-5" action="${pageContext.request.contextPath}/client?action=login" method="POST">
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="required">
+            <input type="text" class="form-control" name="email" id="email" placeholder="Email" required="required">
         </div>
         <div class="form-group">
             <label for="password">Password</label>
