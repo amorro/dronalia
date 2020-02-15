@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import com.dronalia.dao.UserDao;
 import com.dronalia.dto.User;
-import com.dronalia.servlet.LoginServlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -25,8 +24,8 @@ public class AutheticationService {
 
     public static void loginClient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String email = request.getParameter("userUsername");
-        String password = request.getParameter("userPass");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
         User user = new UserDao().loginUserPass(new User(email, password));
 
         System.out.println(user);

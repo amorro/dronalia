@@ -22,7 +22,6 @@
 
     // També introduím el genere al request
     request.setAttribute("categoria", pCategoria);
-
 %>
 
 <jsp:include page="common/header.jsp"/>
@@ -51,32 +50,30 @@
 </div>
 
 <div class="row">
-    <%--    <div class="album py-5 bg-gradient-dark">--%>
-    <!-- card -->
     <c:forEach var="dron" varStatus="loop" items="${listaDrones}">
         <div class="p-1">
             <div class="card" style="width: 18rem;">
                 <img src="<c:out value="${dron.foto}"/>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><c:out value="${dron.nombre}"/></h5>
+                <div class="card-body">
+                    <h5 class="card-title"><c:out value="${dron.nombre}"/></h5>
+                    <div>
+                        <a href="./product.jsp?codi=<c:out value="${dron.id}"/>" class="btn btn-info">Más
+                            información</a>
                         <div>
-                            <a href="./product.jsp?codi=<c:out value="${dron.id}"/>" class="btn btn-info">Más
-                                información</a>
-                            <div>
-                                <p class="card-text">Ejes: <c:out value="${dron.ejes}"/></p>
-                                <p class="card-text">Medida: <c:out value="${dron.medida}"/></p>
-                                <p><c:out value="${dron.precioBase}"/>€</p>
-                                <button class="btn btn-primary"
-                                   onclick="agregarCarrito(${dron.id}, '${dron.nombre}', '${dron.foto}', '${dron.precioBase}')">
-                                    Añadir al carrito</button>
-                            </div>
+                            <p class="card-text">Ejes: <c:out value="${dron.ejes}"/></p>
+                            <p class="card-text">Medida: <c:out value="${dron.medida}"/></p>
+                            <p><c:out value="${dron.precioBase}"/>€</p>
+                            <button class="btn btn-primary"
+                                    onclick="agregarCarrito(${dron.id}, '${dron.nombre}', '${dron.foto}', '${dron.precioBase}')">
+                                Añadir al carrito
+                            </button>
                         </div>
                     </div>
+                </div>
                 </a>
             </div>
         </div>
     </c:forEach>
-    <%--    </div>--%>
 </div>
 
 <jsp:include page="common/footer.jsp"/>

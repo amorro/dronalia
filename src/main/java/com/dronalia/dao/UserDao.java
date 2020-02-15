@@ -83,7 +83,7 @@ public class UserDao {
     }
 
     public int create(User user) {
-        String SQL_INSERT = "INSERT INTO users(use_email, use_name, use_llinatges, use_passwr) "
+        String SQL_INSERT = "INSERT INTO users(use_email, use_name, use_surname, use_passwr) "
                 + " VALUES(?, ?, ?, SHA2(?,256))";
         Connection conn = null;
         PreparedStatement stmt = null;
