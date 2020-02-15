@@ -5,10 +5,10 @@
 <p class="h2 text-center">Registro</p>
 
 <div class="d-flex justify-content-center">
-    <form class="col-5" name="register" method="post" action="action-register">
+    <form class="col-5" name="register" action="${pageContext.request.contextPath}/client?action=create" method="POST">
         <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" name="mail" id="exampleInputEmail1" placeholder="Email" required="required">
+            <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder="Email" required="required">
         </div>
         <div class="form-group">
             <label for="name">Nombre</label>
