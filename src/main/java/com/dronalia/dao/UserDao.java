@@ -83,8 +83,8 @@ public class UserDao {
     }
 
     public int create(User user) {
-        String SQL_INSERT = "INSERT INTO users(use_email, use_name, use_surname, use_passwr) "
-                + " VALUES(?, ?, ?, SHA2(?,256))";
+        String SQL_INSERT = "INSERT INTO users(use_email, use_userName, use_name, use_surname, use_passwr) "
+                + " VALUES(?, ?, ?, ?, SHA2(?,256))";
         Connection conn = null;
         PreparedStatement stmt = null;
 
@@ -94,6 +94,7 @@ public class UserDao {
             stmt = conn.prepareStatement(SQL_INSERT);
             int i = 1;
             stmt.setString(i++, user.getEmail());
+            stmt.setString(i++, user.getNombre());
             stmt.setString(i++, user.getNombre());
             stmt.setString(i++, user.getApellidos());
             stmt.setString(i++, user.getPassword());
@@ -108,7 +109,6 @@ public class UserDao {
         }
         return rows;
     }
-
 
 
 }
