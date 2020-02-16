@@ -93,11 +93,7 @@ public class DronDao {
             }
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
-        } //finally {
-//            DBConnection.close(rs);
-//            DBConnection.close(se);
-//            DBConnection.close(conn);
-//        }
+        }
         return listaDrons;
     }
 

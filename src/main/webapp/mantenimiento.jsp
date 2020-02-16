@@ -6,6 +6,8 @@
 <%@ page import="com.dronalia.dto.Dron" %>
 <%@ page import="com.dronalia.enumeradas.EnumDronCategoria" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.dronalia.dao.AlmacenDao" %>
+<%@ page import="com.dronalia.dto.Almacen" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%
@@ -18,8 +20,11 @@
     }
 
     DronDao listDron = new DronDao();
+    AlmacenDao listAlmacen = new AlmacenDao();
     List<Dron> listaDrones = listDron.listarDronCategoria(categoria);
+    List<Almacen> listaAlmacen = listAlmacen.listarAlmacenes();
     request.setAttribute("listaDrones", listaDrones);
+    request.setAttribute("listaAlmacen", listaAlmacen);
 
     // També introduím el genere al request
     request.setAttribute("categoria", pCategoria);
@@ -42,6 +47,14 @@
 
 <p class="h1">Almacenes</p>
 
+<div class="media">
+    <c:forEach var="alm" varStatus="loop" items="${listaAlmacen}">
+        <div class="media-body">
+            <h5 class="mt-0">${alm.name}</h5>
+            <p>${alm.descripcion}</p>
+        </div>
+    </c:forEach>
+</div>
 
 <jsp:include page="anadirSkin.jsp"/>
 <jsp:include page="anadirDron.jsp"/>
