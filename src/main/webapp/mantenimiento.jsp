@@ -8,26 +8,23 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.dronalia.dao.AlmacenDao" %>
 <%@ page import="com.dronalia.dto.Almacen" %>
+<%@ page import="com.dronalia.dao.StockDao" %>
+<%@ page import="com.dronalia.dto.Stock" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%
-    // Lectura dels paràmetres
-    String pCategoria = request.getParameter("categoria");
-
-    EnumDronCategoria categoria = null;
-    if (pCategoria != null) {
-        categoria = EnumDronCategoria.valueOf(pCategoria);
-    }
-
     DronDao listDron = new DronDao();
     AlmacenDao listAlmacen = new AlmacenDao();
-    List<Dron> listaDrones = listDron.listarDronCategoria(categoria);
+    StockDao listStock = new StockDao();
+
+    List<Dron> listaDrones = listDron.listarDronCategoria(null);
     List<Almacen> listaAlmacen = listAlmacen.listarAlmacenes();
+    List<Stock> listaStock = listStock.listarStock();
+
     request.setAttribute("listaDrones", listaDrones);
     request.setAttribute("listaAlmacen", listaAlmacen);
+    request.setAttribute("listaStock", listaStock);
 
-    // També introduím el genere al request
-    request.setAttribute("categoria", pCategoria);
 %>
 
 <jsp:include page="common/header.jsp"/>
@@ -47,13 +44,34 @@
 
 <p class="h1">Almacenes</p>
 
-<div class="media">
-    <c:forEach var="alm" varStatus="loop" items="${listaAlmacen}">
-        <div class="media-body">
-            <h5 class="mt-0">${alm.name}</h5>
-            <p>${alm.descripcion}</p>
-        </div>
-    </c:forEach>
+<div class="">
+<c:forEach var="alm" varStatus="loop" items="${listaAlmacen}">
+    <p class="h4">${alm.name}</p>
+    <p>${alm.descripcion}</p>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Modelo</th>
+            <th scope="col">Disponibles</th>
+            <th scope="col">Num estantería</th>
+            <th scope="col">Estante</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="stock" varStatus="loop" items="${listaStock}">
+            <c:if test="${alm.id == stock.alm_id}">
+                <tr>
+                    <th scope="row">${stock.modelo}</th>
+                    <td>${stock.disponibles}</td>
+                    <td>${stock.estanteria}</td>
+                    <td>${stock.estante}</td>
+                </tr>
+            </c:if>
+        </c:forEach>
+        </tbody>
+    </table>
+    </div>
+</c:forEach>
 </div>
 
 <jsp:include page="anadirSkin.jsp"/>

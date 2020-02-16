@@ -9,7 +9,8 @@ public class Almacen {
     private String descripcion;
 
 
-    public Almacen(String name, String descripcion) {
+    public Almacen(int id, String name, String descripcion) {
+        this.id = id;
         this.name = name;
         this.descripcion = descripcion;
     }

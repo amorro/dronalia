@@ -18,7 +18,7 @@ public class AlmacenDao {
         List<Almacen> almacenes = new ArrayList<>();
 
         try {
-            String query = "SELECT alm_name, alm_desc FROM almacenes";
+            String query = "SELECT alm_id, alm_name, alm_desc FROM almacenes";
 
             Connection conn = DBConnection.getConnection();
             PreparedStatement sentencia = conn.prepareStatement(query);
@@ -26,10 +26,11 @@ public class AlmacenDao {
 
             if (rs != null) {
                 while (rs.next()) {
+                    int alm_id = rs.getInt("alm_id");
                     String alm_name = rs.getString("alm_name");
                     String alm_desc = rs.getString("alm_desc");
 
-                    Almacen almacen = new Almacen(alm_name, alm_desc);
+                    Almacen almacen = new Almacen(alm_id, alm_name, alm_desc);
                     System.out.println(almacen.toString());
                     almacenes.add(almacen);
                 }
