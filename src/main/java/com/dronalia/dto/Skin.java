@@ -19,6 +19,12 @@ public class Skin {
         this.skinTematicaEnum = skinTematicaEnum;
     }
 
+    public Skin(String name, String photo, Enum<EnumSkinTematica> skinTematicaEnum) {
+        this.name = name;
+        this.photo = photo;
+        this.skinTematicaEnum = skinTematicaEnum;
+    }
+
     public int getId() {
         return id;
     }

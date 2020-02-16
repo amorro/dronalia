@@ -33,7 +33,7 @@ public class AutheticationService {
         if (user.getNombre().equals("admin")) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("mantenimiento.jsp");
         } else if (user.getNombre() != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);

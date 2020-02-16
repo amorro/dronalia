@@ -16,8 +16,16 @@
                             <input type="text" name="skinImg" class="form-control" id="skinImg" placeholder="Ruta">
                         </div>
                     </div>
+                    <div class="form-group">
+					<label for="skinTem">Temática:</label>
+					  <select class="form-control" name="skinTem" id="skinTem">
+					    <option value="VIDEOJUEGOS">Videojuegos</option>
+					    <option value="NATURALEZA">Naturaleza</option>
+					    <option value="PELICULA">Película</option>
+					  </select>
+					</div>
                     <div class="col mb-4">
-                        <button type="button" class="btn btn-success float-right">Añadir skin</button>
+                        <button type="submit"  class="btn btn-success float-right">Añadir skin</button>
                     </div>
                 </form>
             </div>

@@ -2,6 +2,7 @@ package com.dronalia.dao;
 
 
 import com.dronalia.dto.Skin;
+import com.dronalia.dto.User;
 import com.dronalia.enumeradas.EnumSkinTematica;
 
 import java.sql.Connection;
@@ -45,5 +46,31 @@ public class SkinDao {
 //            DBConnection.close(conn);
 //        }
         return skins;
+    }
+
+    public int create(Skin skin) {
+        String SQL_INSERT = "INSERT INTO skins(ski_tematica, ski_nombre, ski_foto) "
+                + " VALUES(?, ?, ?)";
+        Connection conn = null;
+        PreparedStatement stmt = null;
+
+        int rows = 0;
+        try {
+            conn = DBConnection.getConnection();
+            stmt = conn.prepareStatement(SQL_INSERT);
+            int i = 1;
+            stmt.setString(i++, skin.getSkinTematicaEnum().toString());
+            stmt.setString(i++, skin.getName());
+            stmt.setString(i, skin.getPhoto());
+
+            System.out.println(skin.toString());
+            rows = stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            DBConnection.close(stmt);
+            DBConnection.close(conn);
+        }
+        return rows;
     }
 }

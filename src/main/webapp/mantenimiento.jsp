@@ -37,12 +37,13 @@
         </c:forEach>
     </ul>
 </div>
-
+<button class="btn btn-primary m-3" data-toggle="modal" data-target="#dronModal">Añadir Drones</button>
 <button class="btn btn-primary m-3" data-toggle="modal" data-target="#skinsModal">Añadir skins</button>
 
 <p class="h1">Almacenes</p>
 
 
 <jsp:include page="anadirSkin.jsp"/>
+<jsp:include page="anadirDron.jsp"/>
 
 <jsp:include page="common/footer.jsp"/>
