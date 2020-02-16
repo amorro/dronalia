@@ -1,9 +1,13 @@
 package com.dronalia.service;
 
+import com.dronalia.dao.DronDao;
 import com.dronalia.dao.SkinDao;
 import com.dronalia.dao.UserDao;
+import com.dronalia.dto.Dron;
 import com.dronalia.dto.Skin;
 import com.dronalia.dto.User;
+import com.dronalia.enumeradas.EnumDronCategoria;
+import com.dronalia.enumeradas.EnumDronColor;
 import com.dronalia.enumeradas.EnumSkinTematica;
 
 import javax.servlet.ServletException;
@@ -25,7 +29,7 @@ public class MantenimientoService {
 
         String skinName = request.getParameter("skinName");
         String skinImg = request.getParameter("skinImg");
-        Enum<EnumSkinTematica> skinTem = EnumSkinTematica.valueOf("skinTem");
+        EnumSkinTematica skinTem = EnumSkinTematica.valueOf(request.getParameter("skinTem"));
 
         Skin skin = new Skin(skinName, skinImg, skinTem);
 
@@ -37,14 +41,17 @@ public class MantenimientoService {
 
     public static void addDron(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String email = request.getParameter("email");
-        String name = request.getParameter("name");
-        String surname = request.getParameter("surname");
-        String password = request.getParameter("password");
+        String dronName = request.getParameter("dronName");
+        String dronImg = request.getParameter("dronImg");
+        EnumDronCategoria dronCat = EnumDronCategoria.valueOf(request.getParameter("dronCat"));
+        EnumDronColor dronColor = EnumDronColor.valueOf(request.getParameter("dronColor"));
+        String dronAxis = request.getParameter("dronAxis");
+        String dronMesure = request.getParameter("dronMesure");
+        Double dronPrice = Double.valueOf(request.getParameter("dronPrice"));
 
-        User user = new User(email, name, surname, password);
+        Dron dron = new Dron(dronName, dronAxis, dronMesure, dronCat, dronColor, dronPrice, dronImg);
 
-        int registrosModificados = new UserDao().create(user);
+        int registrosModificados = new DronDao().create(dron);
         System.out.println("Registres modificats:" + registrosModificados);
 
         AutheticationService.returnToIndex(request, response);

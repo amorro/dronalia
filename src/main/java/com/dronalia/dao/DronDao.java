@@ -1,6 +1,7 @@
 package com.dronalia.dao;
 
 import com.dronalia.dto.Dron;
+import com.dronalia.dto.Skin;
 import com.dronalia.enumeradas.EnumDronCategoria;
 import com.dronalia.enumeradas.EnumDronColor;
 
@@ -67,7 +68,8 @@ public class DronDao {
             PreparedStatement sentencia = conn.prepareStatement(query);
 
             if (cat != null) {
-                sentencia.setString(1, cat.toString());
+                int i = 1;
+                sentencia.setString(i, cat.toString());
                 System.out.println(cat.toString());
             }
 
@@ -97,5 +99,35 @@ public class DronDao {
 //            DBConnection.close(conn);
 //        }
         return listaDrons;
+    }
+
+    public int create(Dron dron) {
+        String SQL_INSERT = "INSERT INTO drones(dro_nombre, dro_ejes, dro_medida, dro_categoria, dro_color, dro_precio_base, dro_foto) "
+                + " VALUES(?, ?, ?, ?, ?, ?, ?)";
+        Connection conn = null;
+        PreparedStatement stmt = null;
+
+        int rows = 0;
+        try {
+            conn = DBConnection.getConnection();
+            stmt = conn.prepareStatement(SQL_INSERT);
+            int i = 1;
+            stmt.setString(i++, dron.getNombre());
+            stmt.setString(i++, dron.getEjes());
+            stmt.setString(i++, dron.getMedida());
+            stmt.setString(i++, dron.getDronCategoriaEnum().toString());
+            stmt.setString(i++, dron.getDronColorEnum().toString());
+            stmt.setDouble(i++, dron.getPrecioBase());
+            stmt.setString(i, dron.getFoto());
+
+            System.out.println(dron.toString());
+            rows = stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            DBConnection.close(stmt);
+            DBConnection.close(conn);
+        }
+        return rows;
     }
 }

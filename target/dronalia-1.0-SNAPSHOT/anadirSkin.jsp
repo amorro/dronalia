@@ -12,8 +12,8 @@
                     </div>
                     <div class="form-group">
                         <div class="form-group">
-                            <label for="skinImg">Ruta a la imagen</label>
-                            <input type="text" name="skinImg" class="form-control" id="skinImg" placeholder="Ruta">
+                            <label for="skinImg">Nombre de la imagen</label>
+                            <input type="text" name="skinImg" class="form-control" id="skinImg" placeholder="Nombre">
                         </div>
                     </div>
                     <div class="form-group">

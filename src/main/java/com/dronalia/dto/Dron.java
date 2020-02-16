@@ -26,6 +26,16 @@ public class Dron {
         this.foto = foto;
     }
 
+    public Dron(String nombre, String ejes, String medida, Enum<EnumDronCategoria> dronCategoriaEnum, Enum<EnumDronColor> dronColorEnum, Double precioBase, String foto) {
+        this.nombre = nombre;
+        this.ejes = ejes;
+        this.medida = medida;
+        this.dronCategoriaEnum = dronCategoriaEnum;
+        this.dronColorEnum = dronColorEnum;
+        this.precioBase = precioBase;
+        this.foto = foto;
+    }
+
     public Integer getId() {
         return id;
     }
