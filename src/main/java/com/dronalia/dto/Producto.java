@@ -1,109 +1,120 @@
 package com.dronalia.dto;
 
-//Debe convertirse cada producto en una linea de factura//
-public class Producto extends DronFinal{
+import java.util.Objects;
 
+public class Producto{
+    private Integer id;
+    private String nombre;
+    private String fotoDron;
+    private Double precioBase;
+    private String fotoSkin;
+    private String skinNombre;
+    private Boolean tipusSkin;
+    private Double precioSkin;
+
+    public void precioProducto() {
+        Double precioProducto = precioBase + precioSkin;
+    }
 
     public Producto(Integer id, String nombre, String fotoDron, Double precioBase) {
-        super(id, nombre, fotoDron, precioBase);
+        this.id = id;
+        this.nombre = nombre;
+        this.fotoDron = fotoDron;
+        this.precioBase = precioBase;
     }
 
     public Producto(Integer id, String nombre, String fotoDron, Double precioBase, String fotoSkin, String skinNombre, Boolean tipusSkin, Double precioSkin) {
-        super(id, nombre, fotoDron, precioBase, fotoSkin, skinNombre, tipusSkin, precioSkin);
+        this.id = id;
+        this.nombre = nombre;
+        this.fotoDron = fotoDron;
+        this.precioBase = precioBase;
+        this.fotoSkin = fotoSkin;
+        this.skinNombre = skinNombre;
+        this.tipusSkin = tipusSkin;
+        this.precioSkin = precioSkin;
     }
 
-    @Override
     public Integer getId() {
-        return super.getId();
+        return id;
     }
 
-    @Override
     public void setId(Integer id) {
-        super.setId(id);
+        this.id = id;
     }
 
-    @Override
     public String getNombre() {
-        return super.getNombre();
+        return nombre;
     }
 
-    @Override
     public void setNombre(String nombre) {
-        super.setNombre(nombre);
+        this.nombre = nombre;
     }
 
-    @Override
     public String getFotoDron() {
-        return super.getFotoDron();
+        return fotoDron;
     }
 
-    @Override
     public void setFotoDron(String fotoDron) {
-        super.setFotoDron(fotoDron);
+        this.fotoDron = fotoDron;
     }
 
-    @Override
     public Double getPrecioBase() {
-        return super.getPrecioBase();
+        return precioBase;
     }
 
-    @Override
     public void setPrecioBase(Double precioBase) {
-        super.setPrecioBase(precioBase);
+        this.precioBase = precioBase;
     }
 
-    @Override
     public String getFotoSkin() {
-        return super.getFotoSkin();
+        return fotoSkin;
     }
 
-    @Override
     public void setFotoSkin(String fotoSkin) {
-        super.setFotoSkin(fotoSkin);
+        this.fotoSkin = fotoSkin;
     }
 
-    @Override
     public String getSkinNombre() {
-        return super.getSkinNombre();
+        return skinNombre;
     }
 
-    @Override
     public void setSkinNombre(String skinNombre) {
-        super.setSkinNombre(skinNombre);
+        this.skinNombre = skinNombre;
     }
 
-    @Override
     public Boolean getTipusSkin() {
-        return super.getTipusSkin();
+        return tipusSkin;
     }
 
-    @Override
     public void setTipusSkin(Boolean tipusSkin) {
-        super.setTipusSkin(tipusSkin);
+        this.tipusSkin = tipusSkin;
     }
 
-    @Override
     public Double getPrecioSkin() {
-        return super.getPrecioSkin();
+        return precioSkin;
     }
 
-    @Override
     public void setPrecioSkin(Double precioSkin) {
-        super.setPrecioSkin(precioSkin);
+        this.precioSkin = precioSkin;
     }
 
     @Override
     public boolean equals(Object o) {
-        return super.equals(o);
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Producto producto = (Producto) o;
+        return id.equals(producto.id) &&
+                nombre.equals(producto.nombre) &&
+                fotoDron.equals(producto.fotoDron) &&
+                precioBase.equals(producto.precioBase) &&
+                Objects.equals(fotoSkin, producto.fotoSkin) &&
+                Objects.equals(skinNombre, producto.skinNombre) &&
+                Objects.equals(tipusSkin, producto.tipusSkin) &&
+                Objects.equals(precioSkin, producto.precioSkin);
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
+        return Objects.hash(id, nombre, fotoDron, precioBase, fotoSkin, skinNombre, tipusSkin, precioSkin);
     }
 }
