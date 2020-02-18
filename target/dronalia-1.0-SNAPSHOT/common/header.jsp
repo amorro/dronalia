@@ -34,8 +34,7 @@
 <header id="main-header">
     <div class="row">
         <%--            img/header.png--%>
-        <div class="col-6"><img src="/img/header.png" width="100%" alt="..."></div>
-        <div class="col-6"><img src="/img/header.png" width="100%" alt="..."></div>
+        <div class="col-12"><img src="/img/header.png" width="100%" alt="..."></div>
     </div>
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
         <h1 class="my-0 mr-md-auto font-weight-normal lobster"><a class="text-dark" href="/index.jsp">Dronalia</a></h1>

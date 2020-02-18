@@ -7,9 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.dronalia.dto.Skin;
 import com.dronalia.dto.User;
-import com.dronalia.enumeradas.EnumSkinTematica;
 
 public class UserDao {
 
