@@ -17,7 +17,7 @@
 </table>
 <div class="row">
     <div class="col-10"></div>
-    <button class="btn btn-success">Comprar</button>
+    <button class="btn btn-success" onclick="comprado()">Comprar</button>
 </div>
 
 <jsp:include page="common/footer.jsp"/>

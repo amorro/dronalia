@@ -31,6 +31,7 @@ function getCarrito() {
         let drones = JSON.parse(localStorage.getItem("drones"));
         let total = 0;
         $.each(drones, function (key, val) {
+            if (val.skin === undefined) val.skin = 'Sin Skin';
             container.innerHTML += `
                 <tr>
                     <th scope="row"><img src="${val.foto}" style="width: 8vw;" alt=""></th>
@@ -59,4 +60,34 @@ function quitarCarrito(id) {
     carrito = carrito.filter(e => e.id !== id);
     localStorage.setItem("drones", JSON.stringify(carrito));
     getCarrito();
+}
+
+function comprado() {
+    let container = document.getElementById('container-dron');
+    container.innerHTML = null;
+    if (localStorage.getItem('drones')) {
+        let drones = JSON.parse(localStorage.getItem("drones"));
+        let total = 0;
+        $.each(drones, function (key, val) {
+            if (val.skin === undefined) val.skin = 'Sin Skin';
+            container.innerHTML += `
+                <tr>
+                    <th scope="row"><img src="${val.foto}" style="width: 8vw;" alt=""></th>
+                    <td>${val.nombre}</td>
+                    <td>${val.skin}</td>
+                    <td>${val.precio}</td>
+                </tr>`;
+            total = total + parseFloat(val.precio);
+        });
+        container.innerHTML += `
+                <tr>
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>                    
+                    <td></td>
+                    <td>Total: ${total}€</td>
+                </tr>`;
+    } else {
+        document.getElementById('container-dron').innerHTML = "El carrito está vacío";
+    }
 }
