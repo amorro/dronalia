@@ -40,10 +40,8 @@
                 <ul class="preview-thumbnail nav nav-tabs">
                     <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="${dron.foto}"/></a>
                     </li>
-                    <li><a data-target="#pic-2" data-toggle="tab"><img src="img/product.png"/></a></li>
-                    <li><a data-target="#pic-3" data-toggle="tab"><img src="img/product.png"/></a></li>
-                    <li><a data-target="#pic-4" data-toggle="tab"><img src="img/product.png"/></a></li>
-                    <li><a data-target="#pic-5" data-toggle="tab"><img src="img/product.png"/></a></li>
+                    <li><a data-target="#pic-2" data-toggle="tab"><img src="${dron.foto2}"/></a></li>
+                    <li><a data-target="#pic-3" data-toggle="tab"><img src="${dron.foto3}"/></a></li>
                 </ul>
 
             </div>
@@ -67,7 +65,7 @@
                         <p class="product-description">Color: ${fn:toLowerCase(dron.dronColorEnum)}</p>
                         <p class="product-description">Medida: ${dron.medida}cm</p>
                     </div>
-                    <h4 class="price">Precio: <span>${dron.precioBase + precioSkin}€</span></h4>
+                    <h4 class="price">Precio base: <span>${dron.precioBase}€</span></h4>
                 </div>
                 <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
                 <div class="form-check">

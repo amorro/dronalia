@@ -31,6 +31,7 @@
     <title>Plantilla</title>
 </head>
 <body class="container">
+<input type="hidden" id="contextPath" value="${pageContext.request.contextPath}">
 <header id="main-header">
     <div class="row">
         <%--            img/header.png--%>
@@ -44,7 +45,7 @@
                     class="fas fa-shopping-cart"></i></a>
         </nav>
         <c:if test="${usuario==null}">
-            <a class="btn btn-outline-primary" href="/login/login.jsp">Log in</a>
+            <button class="btn btn-outline-primary" data-toggle="modal" data-target="#loginModal">Log in</button>
         </c:if>
         <c:if test="${usuario!=null}">
             <div class="">
@@ -60,3 +61,6 @@
         </c:if>
     </div>
 </header>
+
+
+<jsp:include page="/login/login.jsp"/>
