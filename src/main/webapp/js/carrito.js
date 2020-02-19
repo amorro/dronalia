@@ -31,7 +31,7 @@ function getCarrito() {
         let drones = JSON.parse(localStorage.getItem("drones"));
         let total = 0;
         $.each(drones, function (key, val) {
-            if (val.skin === undefined) val.skin = 'Sin Skin';
+            if (val.skin === undefined || val.skin === null) val.skin = 'Sin Skin';
             container.innerHTML += `
                 <tr>
                     <th scope="row"><img src="${val.foto}" style="width: 8vw;" alt=""></th>
