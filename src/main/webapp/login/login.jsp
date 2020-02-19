@@ -7,7 +7,7 @@
             <div class="modal-body">
                 <p class="h2 text-center">Log In</p>
                 <div class="d-flex justify-content-center">
-                    <form class="col-10" action="${pageContext.request.contextPath}/client?action=login" method="POST">
+                    <form id="loginForm" class="col-10" action="${pageContext.request.contextPath}/client?action=login" method="POST">
                         <div id="alertIncorrecto" class="alert alert-danger d-none">Usuario o contraseña incorrectos</div>
                         <div class="form-group">
                             <label for="email">Email</label>

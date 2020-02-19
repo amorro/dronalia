@@ -7,7 +7,7 @@ public class Order extends Producto {
     private Integer idFactura;
     private String comprador;
     private LocalDate fecha;
-    private Double precioTotal();
+    private Double precioTotal;
 
 
     public Order(Integer id, String nombre, String fotoDron, Double precioBase) {

@@ -39,8 +39,10 @@ public class DronDao {
                     EnumDronColor color = EnumDronColor.valueOf(rs.getString("dro_color"));
                     double precio_base = rs.getDouble("dro_precio_base");
                     String foto = rs.getString("dro_foto");
+                    String foto2 = rs.getString("dro_foto2");
+                    String foto3 = rs.getNString("dro_foto3");
 
-                    dron = new Dron(id, nombre, ejes, medida, categoria, color, precio_base, foto);
+                    dron = new Dron(id, nombre, ejes, medida, categoria, color, precio_base, foto, foto2, foto3);
                     System.out.println(dron.toString());
                 }
             }

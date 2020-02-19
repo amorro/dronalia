@@ -30,11 +30,9 @@
             <div class="preview col-md-6">
                 <!-- imagen al hacer click -->
                 <div class="preview-pic tab-content">
-                    <div class="tab-pane active" id="pic-1"><img src="img/product.png"/></div>
-                    <div class="tab-pane" id="pic-2"><img src="img/product.png"/></div>
-                    <div class="tab-pane" id="pic-3"><img src="img/product.png"/></div>
-                    <div class="tab-pane" id="pic-4"><img src="img/product.png"/></div>
-                    <div class="tab-pane" id="pic-5"><img src="img/product.png"/></div>
+                    <div class="tab-pane active" id="pic-1"><img src="${dron.foto}"/></div>
+                    <div class="tab-pane" id="pic-2"><img src="${dron.foto2}"/></div>
+                    <div class="tab-pane" id="pic-3"><img src="${dron.foto3}"/></div>
                 </div>
                 <!-- imagen que se ve en la pag -->
                 <ul class="preview-thumbnail nav nav-tabs">
@@ -105,7 +103,5 @@
 <c:if test="${!exist}">
     <jsp:forward page="./error.jsp"/>
 </c:if>
-
-<jsp:include page="/modal.jsp"/>
 
 <jsp:include page="common/footer.jsp"/>

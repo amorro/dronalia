@@ -51,7 +51,7 @@
 
 <div class="row">
     <c:forEach var="dron" varStatus="loop" items="${listaDrones}">
-        <div class="p-1">
+        <div class="p-1 col-4">
             <div class="card" style="width: 18rem;">
                 <img src="<c:out value="${dron.foto}"/>" class="card-img-top" alt="...">
                 <div class="card-body">

@@ -20,7 +20,7 @@ public class OrderDao {
             int i = 1;
             stmt.setInt(i++, order.getIdFactura());
             stmt.setString(i++, order.getComprador());
-            stmt.setLocalDate(i++, order.getFecha());
+            stmt.setString(i++, order.getFecha().toString());
             stmt.setDouble(i++, order.getPrecioTotal());
            
 

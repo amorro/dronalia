@@ -6,9 +6,10 @@ import com.dronalia.dto.Producto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class ProductoDao {
-    public int create(Producto producto) {
+    public int create(Order order, Producto producto) {
         String SQL_INSERT = "INSERT INTO lin_factura(lin_fac_id, lin_id, lin_producto, lin_precioProducto)  VALUES(?, ?, ?, ?)";
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -18,11 +19,11 @@ public class ProductoDao {
             conn = DBConnection.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
             int i = 1;
-            stmt.setInt(i++,order.getid());
-            stmt.setInt(i++, producto.getid());
-            stmt.setString(i++, producto.getComprador());
-            stmt.setLocalDate(i++, producto.getFecha());
-            stmt.setDouble(i++, producto.getPrecioTotal());
+            stmt.setInt(i++,order.getId());
+            stmt.setInt(i++, producto.getId());
+            stmt.setString(i++, producto.getNombre());
+            stmt.setString(i++, null);
+            stmt.setDouble(i, producto.getPrecioBase() + producto.getPrecioSkin());
 
 
             System.out.println(producto.toString());
