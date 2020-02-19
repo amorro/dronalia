@@ -34,7 +34,7 @@
 <div class="row">
     <ul class="list-group">
         <c:forEach var="dron" varStatus="loop" items="${listaDrones}">
-            <li class="list-group-item">ID: <c:out value="${dron.id}"/> - <c:out value="${dron.nombre}"/> - Cantidad:
+            <li class="list-group-item">ID: <c:out value="${dron.id}"/> - <c:out value="${dron.nombre}"/> - Precio base:
                 <c:out value="${dron.precioBase}"/></li>
         </c:forEach>
     </ul>
