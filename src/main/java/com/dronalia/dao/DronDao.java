@@ -85,8 +85,11 @@ public class DronDao {
                     EnumDronColor color = EnumDronColor.valueOf(rs.getString("dro_color"));
                     double precio_base = rs.getDouble("dro_precio_base");
                     String foto = rs.getString("dro_foto");
+                    String foto2 = rs.getString("dro_foto2");
+                    String foto3 = rs.getNString("dro_foto3");
 
-                    Dron dron = new Dron(id, nombre, ejes, medida, categoria, color, precio_base, foto);
+
+                    Dron dron = new Dron(id, nombre, ejes, medida, categoria, color, precio_base, foto, foto2, foto3);
                     System.out.println(dron.toString());
                     listaDrons.add(dron);
                 }
@@ -98,8 +101,8 @@ public class DronDao {
     }
 
     public int create(Dron dron) {
-        String SQL_INSERT = "INSERT INTO drones(dro_nombre, dro_ejes, dro_medida, dro_categoria, dro_color, dro_precio_base, dro_foto) "
-                + " VALUES(?, ?, ?, ?, ?, ?, ?)";
+        String SQL_INSERT = "INSERT INTO drones(dro_nombre, dro_ejes, dro_medida, dro_categoria, dro_color, dro_precio_base, dro_foto, dro_foto2, dro_foto3) "
+                + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         Connection conn = null;
         PreparedStatement stmt = null;
 
@@ -115,6 +118,8 @@ public class DronDao {
             stmt.setString(i++, dron.getDronColorEnum().toString());
             stmt.setDouble(i++, dron.getPrecioBase());
             stmt.setString(i, dron.getFoto());
+            stmt.setString(i, dron.getFoto2());
+            stmt.setString(i, dron.getFoto3());
 
             System.out.println(dron.toString());
             rows = stmt.executeUpdate();
