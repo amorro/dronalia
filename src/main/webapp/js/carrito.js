@@ -50,6 +50,7 @@ function getCarrito() {
                     <td></td>
                     <td>Total: ${total}€</td>
                 </tr>`;
+
     } else {
         document.getElementById('container-dron').innerHTML = "El carrito está vacío";
     }
@@ -63,14 +64,27 @@ function quitarCarrito(id) {
 }
 
 function comprado() {
-    let container = document.getElementById('container-dron');
-    container.innerHTML = null;
+    document.getElementById('carrito').innerHTML = null;
     if (localStorage.getItem('drones')) {
         let drones = JSON.parse(localStorage.getItem("drones"));
         let total = 0;
+        document.getElementById('carrito').innerHTML = `
+            <p class="h2 text-center">Factura</p>
+                <table class="table table-striped text-center align-middle">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Skin</th>
+                        <th scope="col">Precio</th>
+                    </tr>
+                    </thead>
+                    <tbody id="container-dron">
+                    </tbody>
+                </table>`;
         $.each(drones, function (key, val) {
-            if (val.skin === undefined) val.skin = 'Sin Skin';
-            container.innerHTML += `
+            if (val.skin === undefined || val.skin === null) val.skin = 'Sin Skin';
+            document.getElementById('container-dron').innerHTML += `
                 <tr>
                     <th scope="row"><img src="${val.foto}" style="width: 8vw;" alt=""></th>
                     <td>${val.nombre}</td>
@@ -79,15 +93,12 @@ function comprado() {
                 </tr>`;
             total = total + parseFloat(val.precio);
         });
-        container.innerHTML += `
+        document.getElementById('container-dron').innerHTML += `
                 <tr>
                     <th scope="row"></th>
                     <td></td>
-                    <td></td>                    
                     <td></td>
                     <td>Total: ${total}€</td>
                 </tr>`;
-    } else {
-        document.getElementById('container-dron').innerHTML = "El carrito está vacío";
     }
 }
